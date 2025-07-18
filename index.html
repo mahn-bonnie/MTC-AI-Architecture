@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTC AI Hospital - System Architecture</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .architecture-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .architecture-diagram {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .layer {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 5px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .layer:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .layer-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .layer-components {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .component {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .component:hover {
+            transform: scale(1.05);
+            border-color: #667eea;
+        }
+        
+        .component-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .component-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .component-desc {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Layer specific colors */
+        .frontend { border-left-color: #4facfe; }
+        .api { border-left-color: #43e97b; }
+        .services { border-left-color: #fa709a; }
+        .ai { border-left-color: #ffecd2; }
+        .data { border-left-color: #a8edea; }
+        .infrastructure { border-left-color: #d299c2; }
+        
+        .tech-stack {
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .tech-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+        }
+        
+        .tech-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .tech-item:hover {
+            transform: scale(1.1);
+        }
+        
+        .flow-arrows {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        
+        .arrow {
+            font-size: 1.5rem;
+            color: #667eea;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .architecture-container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .layer-components {
+                grid-template-columns: 1fr;
+            }
+            
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="architecture-container">
+        <div class="header">
+            <div class="title">🏥 MTC AI Hospital</div>
+            <div class="subtitle">Complete System Architecture</div>
+        </div>
+        
+        <div class="architecture-diagram">
+            <!-- Frontend Layer -->
+            <div class="layer frontend">
+                <div class="layer-title">
+                    📱 Frontend Components & Functionality
+                </div>
+                <div class="layer-components">
+                    <div class="component">
+                        <div class="component-icon">📊</div>
+                        <div class="component-title">Dashboard</div>
+                        <div class="component-desc">• Real-time metrics<br>• Quick actions<br>• System overview</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">👥</div>
+                        <div class="component-title">Patient Management</div>
+                        <div class="component-desc">• Patient records<br>• Registration<br>• Search & filter</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">📅</div>
+                        <div class="component-title">Appointments</div>
+                        <div class="component-desc">• Schedule booking<br>• Calendar view<br>• Notifications</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">📋</div>
+                        <div class="component-title">Medical Records</div>
+                        <div class="component-desc">• Digital records<br>• History tracking<br>• File attachments</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">👨‍⚕️</div>
+                        <div class="component-title">Staff Management</div>
+                        <div class="component-desc">• Employee profiles<br>• Role assignment<br>• Performance tracking</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">📦</div>
+                        <div class="component-title">Inventory</div>
+                        <div class="component-desc">• Stock management<br>• Expiry tracking<br>• Auto-ordering</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">🔬</div>
+                        <div class="component-title">AI Diagnosis</div>
+                        <div class="component-desc">• Symptom analysis<br>• Image recognition<br>• Treatment suggestions</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">⚙️</div>
+                        <div class="component-title">Settings</div>
+                        <div class="component-desc">• User preferences<br>• System config<br>• Security settings</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrows">
+                <div class="arrow">⬇️</div>
+            </div>
+            
+            <!-- API Gateway Layer -->
+            <div class="layer api">
+                <div class="layer-title">
+                    🚪 API Gateway & Security
+                </div>
+                <div class="layer-components">
+                    <div class="component">
+                        <div class="component-icon">🔐</div>
+                        <div class="component-title">Authentication</div>
+                        <div class="component-desc">• JWT tokens<br>• User login/logout<br>• Session management</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">🛡️</div>
+                        <div class="component-title">Authorization</div>
+                        <div class="component-desc">• Role-based access<br>• Permission control<br>• Route protection</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">⚡</div>
+                        <div class="component-title">Load Balancing</div>
+                        <div class="component-desc">• Request distribution<br>• Server health check<br>• Traffic routing</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">📊</div>
+                        <div class="component-title">Rate Limiting</div>
+                        <div class="component-desc">• API throttling<br>• DDoS protection<br>• Usage monitoring</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrows">
+                <div class="arrow">⬇️</div>
+            </div>
+            
+            <!-- Microservices Layer -->
+            <div class="layer services">
+                <div class="layer-title">
+                    🔧 Backend Services & Business Logic
+                </div>
+                <div class="layer-components">
+                    <div class="component">
+                        <div class="component-icon">👥</div>
+                        <div class="component-title">Patient Service</div>
+                        <div class="component-desc">• Patient CRUD ops<br>• Medical history<br>• Emergency contacts</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">👨‍⚕️</div>
+                        <div class="component-title">Staff Service</div>
+                        <div class="component-desc">• Employee management<br>• Department assignment<br>• Shift scheduling</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">📅</div>
+                        <div class="component-title">Appointment Service</div>
+                        <div class="component-desc">• Booking system<br>• Availability check<br>• Reminder notifications</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">📦</div>
+                        <div class="component-title">Inventory Service</div>
+                        <div class="component-desc">• Stock tracking<br>• Expiry alerts<br>• Supplier management</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">📋</div>
+                        <div class="component-title">Records Service</div>
+                        <div class="component-desc">• Medical records<br>• Test results<br>• Document storage</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">🔔</div>
+                        <div class="component-title">Notification Service</div>
+                        <div class="component-desc">• Email/SMS alerts<br>• Push notifications<br>• Emergency broadcasts</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrows">
+                <div class="arrow">⬇️</div>
+            </div>
+            
+            <!-- AI Services Layer -->
+            <div class="layer ai">
+                <div class="layer-title">
+                    🤖 AI Services & Machine Learning
+                </div>
+                <div class="layer-components">
+                    <div class="component">
+                        <div class="component-icon">🔬</div>
+                        <div class="component-title">Diagnostic AI</div>
+                        <div class="component-desc">• Symptom analysis<br>• Disease prediction<br>• Treatment recommendations</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">📈</div>
+                        <div class="component-title">Predictive Analytics</div>
+                        <div class="component-desc">• Risk assessment<br>• Patient outcomes<br>• Resource planning</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">💬</div>
+                        <div class="component-title">AI Chat Assistant</div>
+                        <div class="component-desc">• Natural language<br>• 24/7 support<br>• Medical Q&A</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">👁️</div>
+                        <div class="component-title">Computer Vision</div>
+                        <div class="component-desc">• X-ray analysis<br>• Scan interpretation<br>• Image recognition</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrows">
+                <div class="arrow">⬇️</div>
+            </div>
+            
+            <!-- Data Layer -->
+            <div class="layer data">
+                <div class="layer-title">
+                    💾 Data Storage & Management
+                </div>
+                <div class="layer-components">
+                    <div class="component">
+                        <div class="component-icon">🐘</div>
+                        <div class="component-title">PostgreSQL</div>
+                        <div class="component-desc">• Patient data<br>• Medical records<br>• Staff information</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">⚡</div>
+                        <div class="component-title">Redis Cache</div>
+                        <div class="component-desc">• Session storage<br>• API caching<br>• Real-time data</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">🔍</div>
+                        <div class="component-title">Elasticsearch</div>
+                        <div class="component-desc">• Patient search<br>• Medical records<br>• Full-text indexing</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">📁</div>
+                        <div class="component-title">File Storage</div>
+                        <div class="component-desc">• Medical images<br>• Documents<br>• Backup files</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrows">
+                <div class="arrow">⬇️</div>
+            </div>
+            
+            <!-- Infrastructure Layer -->
+            <div class="layer infrastructure">
+                <div class="layer-title">
+                    ☁️ Infrastructure & DevOps
+                </div>
+                <div class="layer-components">
+                    <div class="component">
+                        <div class="component-icon">🐳</div>
+                        <div class="component-title">Docker</div>
+                        <div class="component-desc">• Application containers<br>• Isolated environments<br>• Easy deployment</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">⚙️</div>
+                        <div class="component-title">Kubernetes</div>
+                        <div class="component-desc">• Container orchestration<br>• Auto-scaling<br>• Load balancing</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">☁️</div>
+                        <div class="component-title">Cloud Platform</div>
+                        <div class="component-desc">• AWS/Azure hosting<br>• Global availability<br>• Backup & recovery</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">📊</div>
+                        <div class="component-title">Monitoring</div>
+                        <div class="component-desc">• System health<br>• Performance metrics<br>• Error tracking</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Technology Stack -->
+        <div class="tech-stack">
+            <div class="tech-title">🛠️ Technology Stack</div>
+            <div class="tech-grid">
+                <div class="tech-item">React</div>
+                <div class="tech-item">TypeScript</div>
+                <div class="tech-item">Node.js</div>
+                <div class="tech-item">Python</div>
+                <div class="tech-item">PostgreSQL</div>
+                <div class="tech-item">Redis</div>
+                <div class="tech-item">Docker</div>
+                <div class="tech-item">Kubernetes</div>
+                <div class="tech-item">TensorFlow</div>
+                <div class="tech-item">FastAPI</div>
+                <div class="tech-item">Tailwind CSS</div>
+                <div class="tech-item">JWT</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
